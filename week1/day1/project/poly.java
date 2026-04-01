@@ -1,23 +1,18 @@
 package week1.day1.project;
 
-class Shape {
-    void area() {
-        System.out.println("area");
-    }
+abstract class Shape {
+    abstract void area();
 
-    void perimeter() {
-        System.out.println("perimeter");
-    }
+    abstract void perimeter();
 }
-
 class Circle extends Shape {
     float r = 6;
-
+    @Override
     void area() {
         double area = (3.14) * (Math.pow(r, 2));
         System.out.println(area);
     }
-
+    @Override
     void perimeter() {
         double perimeter = 2 * 3.14 * r;
         System.out.println(perimeter);
@@ -27,13 +22,15 @@ class Circle extends Shape {
 class Rectangle extends Shape {
     float l = 6;
     float b = 6;
-
+    
+    @Override
     void area() {
         double area = l * b;
         System.out.println(area);
 
     }
 
+    @Override
     void perimeter() {
         double perimeter = 2 * (l + b);
         System.out.println(perimeter);
@@ -46,13 +43,15 @@ class Triangle extends Shape {
     float x= 4;
     float y= 5;
     float z= 3;
-
+    
+    @Override
     void area() {
         double area = (0.5)* h*b;
         System.out.println(area);
 
     }
-
+    
+    @Override
     void perimeter() {
       double perimeter = x+y+z;
       System.out.println(perimeter);
