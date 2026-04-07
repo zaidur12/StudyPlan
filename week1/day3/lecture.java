@@ -60,6 +60,9 @@ public class lecture {
         addStudent(record, rollSet, "Karim", 22, "present");
         addStudent(record, rollSet, "Nabila", 23, "present");
         addStudent(record, rollSet, "Sadia", 24, "absent");
+        addStudent(record, rollSet, "Sadia", 24, "absent");
+
+
 
         for (Student student : record) {
             System.out.println(
