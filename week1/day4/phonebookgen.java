@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
+import java.util.function.Function;
 
 class Phone {
     private long number;
@@ -41,7 +43,7 @@ class Phone {
 
 }
 
-public class phonebookad {
+public class phonebookgen {
 
     public static void addcontact(Set<Long> phonenumber, List<Phone> Directory, String name, String surname,
             long number) {
@@ -65,8 +67,9 @@ public class phonebookad {
 
         // for (Phone i : Directory) {
 
-        //     System.out.println(
-        //             "Name:- " + i.getName() + " Surname:- " + i.getSurname() + " PhoneNumber:- " + i.getNumber());
+        // System.out.println(
+        // "Name:- " + i.getName() + " Surname:- " + i.getSurname() + " PhoneNumber:- "
+        // + i.getNumber());
 
         // }
         System.out.println("--------------------------");
@@ -78,22 +81,51 @@ public class phonebookad {
                     "Name:- " + i.getName() + " Surname:- " + i.getSurname() + " PhoneNumber:- " + i.getNumber());
 
         }
-        // Scanner myObj = new Scanner(System.in);
-        // System.out.println("Enter Your Surname");
-        // String o = myObj.nextLine();
+
+        Function<List<Phone>, List<Phone>> search = li -> {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter Your Name:");
+            String input = sc.nextLine();
+
+            List<Phone> result = new ArrayList<>();
+
+            for (Phone p : li) {
+                if (p.getName().equalsIgnoreCase(input)) {
+                    System.out.println("Name " + p.getName() + " Phone " + p.getNumber());
+                    result.add(p);
+
+                }
+            }
+
+            return result;
+        };
+        List<Phone> serachh = search.apply(Directory);
+        System.out.println(serachh);
+        Function<List<Phone>, List<Phone>> filterr = li -> {
+          List<Phone> list = new ArrayList<>(); 
+          for( Phone p : li) {
+             if(p.getName().startsWith("Z"))
+                System.out.println("Name " + p.getName() + " Phone " + p.getNumber());
+                    
+          }
+          return list;
+        };
+        List<Phone> serach = filterr.apply(Directory);
+        System.out.println(serach);
 
         // boolean found = false;
 
         // for (Phone i : Directory) {
-        //     if (i.getSurname().equals(o)) {
-        //         System.out.println(
-        //                 "Name:- " + i.getName() + " Surname:- " + i.getSurname() + " PhoneNumber:- " + i.getNumber());
-        //         found = true;
-        //     }
+        // if (i.getSurname().equals(o)) {
+        // System.out.println(
+        // "Name:- " + i.getName() + " Surname:- " + i.getSurname() + " PhoneNumber:- "
+        // + i.getNumber());
+        // found = true;
+        // }
         // }
 
         // if (!found) {
-        //     System.out.println("Contact not found");
+        // System.out.println("Contact not found");
         // }
 
     }
